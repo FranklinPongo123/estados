@@ -118,8 +118,6 @@
     .depto.verde  { background: linear-gradient(135deg,#16a34a,#22c55e); box-shadow: 0 4px 18px var(--glow-g); }
     .depto.rojo   { background: linear-gradient(135deg,#b91c1c,#ef4444); box-shadow: 0 4px 18px var(--glow-r); }
     .depto.amber  { background: linear-gradient(135deg,#d97706,#f59e0b); color: #1a1000; box-shadow: 0 4px 18px var(--glow-a); }
-
-    /* MODAL */
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,.8);
       backdrop-filter: blur(8px);
@@ -180,8 +178,6 @@
     .fin-table td:last-child { text-align: right; font-weight: 700; }
     .fin-total td { color: var(--amber); font-size: 14px; font-weight: 800; }
     .fin-monto td { color: var(--red);   font-size: 14px; font-weight: 800; }
-
-    /* fila comprobante en tabla financiera */
     .fin-baucher td { color: var(--green); font-size: 13px; }
     .fin-baucher a {
       color: var(--green); text-decoration: none; font-weight: 700;
@@ -192,14 +188,11 @@
     }
     .fin-baucher a:hover { background: rgba(34,197,94,.2); }
     .fin-baucher-pending td { color: var(--amber); font-size: 12px; font-style: italic; }
-
-    /* baucher link — Drive */
     .baucher-link {
       display: flex; align-items: center; gap: 10px;
       border-radius: 12px; padding: 12px 16px; margin-bottom: 12px;
       text-decoration: none; font-size: 13px; font-weight: 700;
-      transition: filter .2s, transform .1s;
-      border: 1.5px solid;
+      transition: filter .2s, transform .1s; border: 1.5px solid;
     }
     .baucher-link:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .baucher-link .link-icon { font-size: 20px; flex-shrink: 0; }
@@ -207,35 +200,24 @@
     .baucher-link .link-title { display: block; font-size: 12px; font-weight: 800; letter-spacing: .3px; }
     .baucher-link .link-sub   { display: block; font-size: 11px; opacity: .7; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .baucher-link .link-arr   { font-size: 16px; flex-shrink: 0; opacity: .6; }
-    .link-drive {
-      background: rgba(52,168,83,.1); border-color: rgba(52,168,83,.4); color: #4ade80;
-    }
-
-    /* Vista previa del comprobante existente en Drive (iframe) */
+    .link-drive { background: rgba(52,168,83,.1); border-color: rgba(52,168,83,.4); color: #4ade80; }
     .baucher-preview {
       width: 100%; border-radius: 12px; overflow: hidden;
       margin-bottom: 12px; border: 1px solid var(--border);
       background: #000; display: none;
     }
-    .baucher-preview iframe {
-      width: 100%; height: 220px; border: none; display: block;
-    }
+    .baucher-preview iframe { width: 100%; height: 220px; border: none; display: block; }
     .baucher-preview-label {
       font-size: 10px; font-weight: 800; letter-spacing: 2px;
       text-transform: uppercase; color: var(--muted);
       padding: 8px 12px; background: var(--card);
-      border-top: 1px solid var(--border);
-      text-align: center;
+      border-top: 1px solid var(--border); text-align: center;
     }
-
-    /* Subir comprobante */
     .comp-section {
       background: var(--card); border-radius: 14px; padding: 18px;
       border: 1px solid var(--border); margin-top: 4px;
     }
     .comp-section h4 { font-size: 13px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
-
-    /* drop zone */
     .drop-zone {
       border: 2px dashed var(--border); border-radius: 12px;
       padding: 28px 16px; text-align: center; cursor: pointer;
@@ -274,8 +256,6 @@
     }
     #btn-registrar:hover    { filter: brightness(1.15); }
     #btn-registrar:disabled { opacity: .45; pointer-events: none; }
-
-    /* CONFIRM */
     .confirm-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,.65);
       backdrop-filter: blur(6px);
@@ -340,8 +320,6 @@
   </div>
   <div id="edificio"></div>
 </div>
-
-<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="cerrarModalSiOverlay(event)">
   <div class="modal">
     <div class="modal-head">
@@ -352,16 +330,12 @@
       <button class="btn-close" onclick="cerrarModal()">✕</button>
     </div>
     <div class="modal-body">
-
-      <!-- QR -->
       <div class="qr-box" id="m-qr-box" style="display:none">
         <div class="qr-label">📲 Escanee para realizar el pago</div>
-        <img src="https://www.dropbox.com/scl/fi/h6uuorcq6hm74x5b7jl7t/QR-final.jpg?rlkey=0kb64fqfuf4uo6xvprg6k6ivx&st=8q2yml1y&dl=1"
+        <img src="https://www.dropbox.com/scl/fi/h6uuorcq6hm74x5b7jl7t/QR-final.jpg?rlkey=0kb64fqfuf4uo6xvprg6k6ivx&st=8q2yml1y&raw=1"
           alt="QR de pago"
           onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=PagoEdificio&color=000000&bgcolor=ffffff'">
       </div>
-
-      <!-- Info inquilino -->
       <div class="info-grid">
         <div class="info-item full">
           <div class="info-label">Inquilino / Propietario</div>
@@ -376,8 +350,6 @@
           <div class="info-value" id="m-wsp">—</div>
         </div>
       </div>
-
-      <!-- Desglose financiero -->
       <div class="fin-section">
         <div class="fin-title">Desglose de Pagos</div>
         <table class="fin-table">
@@ -390,7 +362,6 @@
           <tr class="fin-total"><td>TOTAL</td><td id="f-total">—</td></tr>
           <tr><td>Monto Recibido</td>   <td id="f-recibido">—</td></tr>
           <tr class="fin-monto"><td>Diferencia</td><td id="f-diferencia">—</td></tr>
-          <!-- ✅ Fila comprobante en la tabla financiera -->
           <tr id="f-baucher-row" class="fin-baucher" style="display:none">
             <td>🖼️ Comprobante</td>
             <td id="f-baucher-cell">—</td>
@@ -401,14 +372,10 @@
           </tr>
         </table>
       </div>
-
-      <!-- Vista previa del comprobante en iframe -->
       <div class="baucher-preview" id="m-baucher-preview">
         <iframe id="m-baucher-iframe" src="" title="Comprobante de pago" allowfullscreen></iframe>
         <div class="baucher-preview-label">🖼️ Comprobante registrado</div>
       </div>
-
-      <!-- Enlace directo al comprobante -->
       <a class="baucher-link link-drive" id="m-baucher-link" href="#" target="_blank" rel="noopener" style="display:none">
         <span class="link-icon">🖼️</span>
         <span class="link-body">
@@ -417,21 +384,21 @@
         </span>
         <span class="link-arr">↗</span>
       </a>
-
-      <!-- Subir comprobante (visible si hay deuda o pendiente) -->
       <div class="comp-section" id="m-comp-section" style="display:none">
         <h4>📎 Registrar Comprobante de Pago</h4>
 
         <div class="drop-zone" id="drop-zone">
           <input type="file" id="comp-file" accept="image/*" onchange="onFileChange(event)">
           <div class="dz-icon">📁</div>
-          <div class="dz-txt">Haga clic o arrastre la imagen del voucher aquí</div>
+          <div class="dz-txt">Haga clic o arrastre la imagen del voucher aquí<br>
+            <small style="color:#5555aa;font-size:10px">(JPG, PNG, WEBP, BMP, GIF — cualquier formato de imagen)</small>
+          </div>
           <div class="dz-name" id="dz-name"></div>
         </div>
 
         <img id="img-preview" class="img-preview" alt="Vista previa">
 
-        <div class="prog-label" id="prog-label">Procesando registro...</div>
+        <div class="prog-label" id="prog-label">Enviando archivo al servidor...</div>
         <div class="progress-wrap" id="progress-wrap">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
@@ -445,7 +412,6 @@
   </div>
 </div>
 
-<!-- CONFIRM -->
 <div class="confirm-overlay" id="confirm-overlay">
   <div class="confirm-box">
     <span class="confirm-icon" id="c-icon">✅</span>
@@ -454,16 +420,8 @@
     <button class="confirm-btn" id="c-btn" onclick="cerrarConfirm()">Aceptar</button>
   </div>
 </div>
-
 <script>
-// ══════════════════════════════════════════════════════════════
-//  CONFIG
-// ══════════════════════════════════════════════════════════════
-const GAS_URL = "https://script.google.com/macros/s/AKfycbxQPTrfuqtJb4ljnZNx0RGrHdQmr94WwoqnNydJWOPPR7K7aLdJoYW_ngkFVJma6W0J/exec";
-
-// ══════════════════════════════════════════════════════════════
-//  DATOS DEMO
-// ══════════════════════════════════════════════════════════════
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxdgfZtWLbPWDAzhwh7Tegw4XYcmQaXOimcLq9xxFb6siFTYkIZ1Ba-r9tcaoiyNNqCHQ/exec";
 const DATOS_DEMO = {
   "101":  { departamento:"101",  inquilino:"Franz Pongo",      carnet:"7234891", whatsapp:"+591 71934450", alquiler:1500, mantenimiento:80,  limpieza:40, seguridad:60, agua:35, electricidad:90,  total:1805, baucher:"", montoRecibido:1805,   diferencia:0,       estado:"Al día"          },
   "102":  { departamento:"102",  inquilino:"María Flores",     carnet:"6198234", whatsapp:"+591 77612340", alquiler:1500, mantenimiento:80,  limpieza:40, seguridad:60, agua:42, electricidad:110, total:1832, baucher:"", montoRecibido:0,       diferencia:1832,    estado:"Con deuda"       },
@@ -510,10 +468,6 @@ const DATOS_DEMO = {
 let deptos      = { ...DATOS_DEMO };
 let deptoActivo = null;
 let archivoActual = null;
-
-// ══════════════════════════════════════════════════════════════
-//  HELPERS
-// ══════════════════════════════════════════════════════════════
 const esAlDia = e => e.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim() === "al dia";
 const bs = v  => (v != null && v !== '') ? `${parseFloat(v).toFixed(2)} Bs.` : '—';
 
@@ -528,18 +482,14 @@ function drivePreviewUrl(url) {
 
 function esDriveUrl(url) {
   if (!url) return false;
-  return url.startsWith('https://drive.google.com/') ||
-         url.startsWith('http://drive.google.com/');
+  return url.startsWith('https://drive.google.com/') || url.startsWith('http://drive.google.com/');
 }
 
-// ══════════════════════════════════════════════════════════════
-//  FILE INPUT — drag & drop + preview
-// ══════════════════════════════════════════════════════════════
 function onFileChange(e) {
   const file = e.target.files[0];
   if (!file) return;
   archivoActual = file;
-  document.getElementById('dz-name').textContent = file.name;
+  document.getElementById('dz-name').textContent = `${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
   document.getElementById('dz-name').style.display = 'block';
   const preview = document.getElementById('img-preview');
   preview.src   = URL.createObjectURL(file);
@@ -553,13 +503,15 @@ if (dz) {
   dz.addEventListener('drop', e => {
     e.preventDefault(); dz.classList.remove('dragover');
     const file = e.dataTransfer.files[0];
-    if (file) { document.getElementById('comp-file').files = e.dataTransfer.files; onFileChange({ target: { files: [file] } }); }
+    if (file) {
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      document.getElementById('comp-file').files = dt.files;
+      onFileChange({ target: { files: [file] } });
+    }
   });
 }
 
-// ══════════════════════════════════════════════════════════════
-//  RENDER EDIFICIO
-// ══════════════════════════════════════════════════════════════
 function renderEdificio() {
   const edificio = document.getElementById('edificio');
   edificio.innerHTML = '';
@@ -585,9 +537,6 @@ function renderEdificio() {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-//  MODAL
-// ══════════════════════════════════════════════════════════════
 function abrirModal(num) {
   deptoActivo   = num;
   archivoActual = null;
@@ -614,7 +563,6 @@ function abrirModal(num) {
   document.getElementById('f-recibido').textContent    = bs(d.montoRecibido);
   document.getElementById('f-diferencia').textContent  = bs(d.diferencia);
 
-  // ✅ Fila de comprobante en la tabla financiera
   const baucherRow        = document.getElementById('f-baucher-row');
   const baucherCell       = document.getElementById('f-baucher-cell');
   const baucherPendingRow = document.getElementById('f-baucher-pending-row');
@@ -623,24 +571,18 @@ function abrirModal(num) {
     baucherCell.innerHTML = `<a href="${d.baucher}" target="_blank" rel="noopener">📄 Ver comprobante ↗</a>`;
     baucherRow.style.display        = '';
     baucherPendingRow.style.display = 'none';
-  } else if (!alDia && d.baucher === '') {
-    // Sin comprobante aún y hay deuda/pendiente → no mostrar nada en la tabla (se sube abajo)
-    baucherRow.style.display        = 'none';
-    baucherPendingRow.style.display = 'none';
   } else {
     baucherRow.style.display        = 'none';
     baucherPendingRow.style.display = 'none';
   }
 
-  // Vista previa iframe + enlace
   const baucherPreview = document.getElementById('m-baucher-preview');
   const baucherIframe  = document.getElementById('m-baucher-iframe');
   const baucherLink    = document.getElementById('m-baucher-link');
   const baucherSub     = document.getElementById('m-baucher-sub');
 
   if (esDriveUrl(d.baucher)) {
-    const previewUrl = drivePreviewUrl(d.baucher);
-    baucherIframe.src            = previewUrl;
+    baucherIframe.src            = drivePreviewUrl(d.baucher);
     baucherPreview.style.display = 'block';
     baucherLink.href             = d.baucher;
     baucherSub.textContent       = 'Abrir comprobante completo ↗';
@@ -651,7 +593,6 @@ function abrirModal(num) {
     baucherLink.style.display    = 'none';
   }
 
-  // Sección subir: solo si hay deuda o pendiente
   const compSec = document.getElementById('m-comp-section');
   compSec.style.display = alDia ? 'none' : 'block';
   document.getElementById('comp-file').value = '';
@@ -676,9 +617,6 @@ function cerrarModal() {
 function cerrarModalSiOverlay(e) { if (e.target === document.getElementById('modal-overlay')) cerrarModal(); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
 
-// ══════════════════════════════════════════════════════════════
-//  CONFIRM
-// ══════════════════════════════════════════════════════════════
 function mostrarConfirm({ icon='✅', title='¡Listo!', msg='', btnColor='' }) {
   document.getElementById('c-icon').textContent  = icon;
   document.getElementById('c-title').textContent = title;
@@ -688,13 +626,19 @@ function mostrarConfirm({ icon='✅', title='¡Listo!', msg='', btnColor='' }) {
 }
 function cerrarConfirm() { document.getElementById('confirm-overlay').classList.remove('open'); }
 
-// ══════════════════════════════════════════════════════════════
-//  REGISTRAR PAGO
-// ══════════════════════════════════════════════════════════════
 async function registrarPago() {
-  const file = archivoActual || document.getElementById('comp-file').files[0];
+
+  const file =
+    archivoActual ||
+    document.getElementById('comp-file').files[0];
+
   if (!file) {
-    mostrarConfirm({ icon:'⚠️', title:'Atención', msg:'Debes seleccionar un comprobante.', btnColor:'red' });
+    mostrarConfirm({
+      icon: '⚠️',
+      title: 'Atención',
+      msg: 'Debes seleccionar un comprobante.',
+      btnColor: 'red'
+    });
     return;
   }
 
@@ -703,114 +647,134 @@ async function registrarPago() {
   const progBar   = document.getElementById('progress-bar');
   const progLabel = document.getElementById('prog-label');
 
-  btn.disabled    = true;
-  btn.innerHTML   = '<span class="spin">⟳</span> Preparando registro...';
-  progWrap.style.display  = 'block';
-  progLabel.style.display = 'block';
-  progLabel.textContent   = 'Preparando comprobante...';
-  progBar.style.width     = '10%';
+  btn.disabled = true;
 
-  const deptoGuardado = deptoActivo;
+  progWrap.style.display = 'block';
+  progLabel.style.display = 'block';
 
   try {
-    // ── 1. Convertir imagen a base64 ──────────────────────────
-    const { base64, mimeType } = await fileToBase64(file);
-    progBar.style.width   = '35%';
-    btn.innerHTML         = '<span class="spin">⟳</span> Procesando registro...';
-    progLabel.textContent = 'Procesando registro...';
 
-    // ── 2. Enviar al GAS ──────────────────────────────────────
-    const payload = {
-      action:       'registrarBaucher',
-      departamento: deptoGuardado,
-      imageBase64:  base64,
-      mimeType:     mimeType,
-      fileName:     `comprobante_depto${deptoGuardado}_${Date.now()}.jpg`
-    };
+    btn.innerHTML =
+      '<span class="spin">⟳</span> Convirtiendo imagen...';
 
-    progBar.style.width = '55%';
+    progLabel.textContent =
+      'Convirtiendo imagen...';
 
-    enviarViaIframe(JSON.stringify(payload));
+    progBar.style.width = '20%';
 
-    progBar.style.width   = '70%';
-    btn.innerHTML         = '<span class="spin">⟳</span> Confirmando registro...';
-    progLabel.textContent = 'Confirmando registro...';
+    const base64 = await convertirABase64(file);
 
-    cerrarModal();
-    mostrarConfirm({
-      icon: '⏳',
-      title: 'Procesando...',
-      msg: `Registrando comprobante del <strong>Depto ${deptoGuardado}</strong>...`
+    progBar.style.width = '50%';
+
+    progLabel.textContent =
+      'Enviando comprobante...';
+
+    const formData = new FormData();
+
+    formData.append(
+      "payload",
+      JSON.stringify({
+        action: "registrarBaucher",
+        departamento: deptoActivo,
+        imageBase64: base64,
+        mimeType: file.type,
+        fileName: file.name
+      })
+    );
+
+    console.log("Enviando a:", GAS_URL);
+
+    const response = await fetch(GAS_URL, {
+      method: "POST",
+      body: formData
     });
 
-    // ── 3. Polling más rápido: intervalos de 1.5s, máx 45s ───
-    const driveUrl = await esperarBaucherConUrl(deptoGuardado, 45, 1500);
-    cerrarConfirm();
-    renderEdificio();
-
-    if (driveUrl) {
-      mostrarConfirm({
-        icon: '✅',
-        title: '¡Comprobante Registrado!',
-        msg: `Comprobante del <strong>Depto ${deptoGuardado}</strong> registrado correctamente.<br><br>
-              <a href="${driveUrl}" target="_blank" rel="noopener"
-                 style="display:inline-block; background:rgba(74,222,128,.15); border:1.5px solid #4ade80;
-                        color:#4ade80; font-weight:800; text-decoration:none;
-                        padding:10px 18px; border-radius:10px; margin-top:4px; font-size:13px;">
-                📄 Ver comprobante registrado ↗
-              </a>`
-      });
-    } else {
-      mostrarConfirm({
-        icon: '⏳',
-        title: 'Registro en proceso',
-        msg: `El comprobante fue enviado correctamente.<br>
-              Presiona <strong>Sincronizar Datos</strong> en unos segundos para verificar el registro.<br><br>
-              <small style="color:#8888aa">El procesamiento puede tardar unos momentos.</small>`
-      });
+    if (!response.ok) {
+      throw new Error(
+        `HTTP ${response.status} ${response.statusText}`
+      );
     }
 
-  } catch (err) {
-    cerrarConfirm();
-    mostrarConfirm({ icon:'❌', title:'Error', msg:`<small style="color:#cc8888">${err.message}</small>`, btnColor:'red' });
+    const data = await response.json();
+
+    console.log(data);
+
+    if (data.status !== "ok") {
+      throw new Error(
+        data.message || "Error desconocido"
+      );
+    }
+
+    progBar.style.width = '100%';
+
+    cerrarModal();
+
+    mostrarConfirm({
+      icon:'✅',
+      title:'Comprobante registrado',
+      msg:'El comprobante fue enviado correctamente.'
+    });
+
+    await sincronizar();
+
+  } catch(err) {
+
+    console.error(err);
+
+    mostrarConfirm({
+      icon:'❌',
+      title:'Error',
+      msg: err.message,
+      btnColor:'red'
+    });
+
+  } finally {
+
     btn.disabled = false;
-    btn.innerHTML = '<span>📋</span> Registrar Comprobante de Pago';
+
+    btn.innerHTML =
+      '<span>📋</span> Registrar Comprobante de Pago';
+
+    progBar.style.width = '0%';
+
+    progWrap.style.display = 'none';
+    progLabel.style.display = 'none';
   }
 }
+function convertirABase64(file) {
 
-function fileToBase64(file) {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, reject) => {
+
     const reader = new FileReader();
-    reader.onload = e => {
-      const dataUrl  = e.target.result;
-      const [meta, base64] = dataUrl.split(',');
-      const mimeType = meta.match(/:(.*?);/)[1];
-      res({ base64, mimeType });
+
+    reader.onload = () => {
+
+      const resultado = reader.result;
+
+      const base64 = resultado.split(',')[1];
+
+      resolve(base64);
     };
-    reader.onerror = rej;
+
+    reader.onerror = reject;
+
     reader.readAsDataURL(file);
   });
 }
 
-function enviarViaIframe(jsonPayload) {
-  document.querySelectorAll('iframe.gas-iframe').forEach(el => el.remove());
-  const iframeName = 'gas_iframe_' + Date.now();
-  const iframe = document.createElement('iframe');
-  iframe.name = iframeName; iframe.className = 'gas-iframe';
-  iframe.style.cssText = 'display:none;position:absolute;width:0;height:0;border:0;';
-  document.body.appendChild(iframe);
-  const form = document.createElement('form');
-  form.method = 'POST'; form.action = GAS_URL;
-  form.target = iframeName; form.enctype = 'application/x-www-form-urlencoded';
-  form.style.display = 'none';
-  const input = document.createElement('input');
-  input.type = 'hidden'; input.name = 'payload'; input.value = jsonPayload;
-  form.appendChild(input); document.body.appendChild(form);
-  form.submit();
-  setTimeout(() => { try { form.remove(); iframe.remove(); } catch(e){} }, 15000);
+function obtenerExtension(file) {
+  if (file.name && file.name.includes('.')) {
+    return '.' + file.name.split('.').pop().toLowerCase();
+  }
+
+  const mimeMap = {
+    'image/jpeg': '.jpg', 'image/png': '.png', 'image/gif': '.gif',
+    'image/webp': '.webp', 'image/bmp': '.bmp', 'image/tiff': '.tiff',
+    'image/heic': '.heic', 'image/heif': '.heif',
+  };
+  return mimeMap[file.type] || '.jpg';
 }
 
-// ── Polling más rápido: 1500ms, máx 45 segundos ──────────────
 async function esperarBaucherConUrl(depto, maxSeg, intervaloMs) {
   const inicio = Date.now();
   while ((Date.now() - inicio) < maxSeg * 1000) {
@@ -823,18 +787,13 @@ async function esperarBaucherConUrl(depto, maxSeg, intervaloMs) {
         deptos = {};
         json.data.forEach(r => { deptos[String(r.departamento)] = r; });
         const fila = json.data.find(r => String(r.departamento) === String(depto));
-        if (fila && esDriveUrl(fila.baucher)) {
-          return fila.baucher;
-        }
+        if (fila && esDriveUrl(fila.baucher)) return fila.baucher;
       }
     } catch(e) { /* reintentar */ }
   }
   return null;
 }
 
-// ══════════════════════════════════════════════════════════════
-//  SINCRONIZAR
-// ══════════════════════════════════════════════════════════════
 async function sincronizar() {
   const btn  = document.getElementById('btn-sync');
   const icon = document.getElementById('sync-icon');
@@ -854,9 +813,6 @@ async function sincronizar() {
   icon.textContent = '⟳';
 }
 
-// ══════════════════════════════════════════════════════════════
-//  INIT
-// ══════════════════════════════════════════════════════════════
 renderEdificio();
 sincronizar();
 </script>
